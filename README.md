@@ -90,10 +90,3 @@ git push origin feature/ma-fonctionnalite
 - Vérifier les câbles
 - Regarder les logs dans le moniteur série
 
-## Contact
-
-Pour toute question, contacter [votre email]
-
----
-
-**Note** : Ce dispositif traite des données médicales. Respecter la confidentialité des patients.
