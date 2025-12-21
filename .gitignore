@@ -1,0 +1,24 @@
+# PlatformIO
+.pio/
+.vscode/
+.clang_complete
+.gcc-flags.json
+
+# Fichiers compilés
+*.o
+*.bin
+*.hex
+*.elf
+
+# Secrets (IMPORTANT!)
+include/secrets.h
+secrets.h
+
+# Système
+.DS_Store
+Thumbs.db
+
+# IDE
+*.swp
+*.swo
+*~
