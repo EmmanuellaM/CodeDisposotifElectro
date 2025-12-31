@@ -1,0 +1,52 @@
+#include <Wire.h>
+
+void setup() {
+  Serial.begin(115200);
+  delay(2000);
+  
+  Wire.begin(21, 22); // SDA, SCL
+  
+  Serial.println("\n=============================");
+  Serial.println("TEST APDS-9960 UNIQUEMENT");
+  Serial.println("=============================\n");
+  
+  byte count = 0;
+  
+  for (byte addr = 1; addr < 127; addr++) {
+    Wire.beginTransmission(addr);
+    byte error = Wire.endTransmission();
+    
+    if (error == 0) {
+      Serial.print(">>> CAPTEUR TROUVE à 0x");
+      if (addr < 16) Serial.print("0");
+      Serial.print(addr, HEX);
+      
+      if (addr == 0x39) {
+        Serial.println(" <<< C'EST L'APDS-9960 !");
+      } else {
+        Serial.println();
+      }
+      count++;
+    }
+  }
+  
+  Serial.println("\n=============================");
+  if (count == 0) {
+    Serial.println("AUCUN capteur détecté !");
+    Serial.println("PROBLEME : APDS-9960 ne répond pas");
+    Serial.println("\nVérifie :");
+    Serial.println("1. VIN connecté à 3.3V ?");
+    Serial.println("2. GND connecté à GND ?");
+    Serial.println("3. SDA connecté à GPIO21 ?");
+    Serial.println("4. SCL connecté à GPIO22 ?");
+  } else {
+    Serial.print("Total : ");
+    Serial.print(count);
+    Serial.println(" capteur(s) détecté(s)");
+  }
+  Serial.println("=============================");
+}
+
+void loop() {
+  // Rien
+}
